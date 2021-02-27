@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::middleware('VerifyJwt','VerifyAdmin')->group(function () {
     Route::apiResource('organization', OrganizationController::class);
     Route::get('/filter/{name}', [OrganizationController::class,'filter']);
 });
+
+Route::resource('schedule', ScheduleController::class);
