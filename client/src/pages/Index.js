@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import Brands from '../components/Brands';
 import Record from '../components/Record';
 import RegistrationFlow from '../components/RegistrationFlow';
+import Contact from '../components/Contact';
 
 const index = () => {
   return (
@@ -13,6 +14,7 @@ const index = () => {
       <Brands />
       <Record />
       <RegistrationFlow />
+      <Contact />
     </Content>
   )
 }

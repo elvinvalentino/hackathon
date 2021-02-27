@@ -26,4 +26,5 @@ export const RecordTitle = styled(Typography)`
 export const RecordSubTitle = styled(Typography)`
   text-align: center;
   max-width: 300px;
+  margin-bottom: 6em;
 `
