@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Schedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
 {
@@ -43,8 +44,14 @@ class ScheduleController extends Controller
             'address' => 'required'
         ]);
 
-        $requestData = $request->all();
-        $data = Schedule::create($requestData);
+        // $requestData = $request->all();
+        $data = Schedule::create([
+            'user_id' => Auth::user()->id,
+            'country' => $request->country,
+            'city' => $request->city,
+            'address' => $request->address
+        ]);
+
         return response()->json($data,200);
     }
 

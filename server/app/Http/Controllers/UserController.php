@@ -30,19 +30,19 @@ class UserController extends Controller
         return response()->json(['token' => $token],200);
     }
 
-    // public function register(Request $request){
+    public function register(Request $request){
 
-    //     User::create([
-    //         'email' => $request->email,
-    //         'name' => $request->name,
-    //         'password' => Hash::make($request->password),
-    //         'role_id' => 1
-    //     ]);
+        User::create([
+            'email' => $request->email,
+            'name' => $request->name,
+            'password' => Hash::make($request->password),
+            'role_id' => 1
+        ]);
 
-    //     return response()->json([
-    //         "message" => "Register success"
-    //     ],200);
-    // }
+        return response()->json([
+            "message" => "Register success"
+        ],200);
+    }
 
     public function logout(){
         Auth::logout();
