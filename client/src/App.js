@@ -11,8 +11,10 @@ import Admin from './pages/Admin';
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
       <Router>
+        <Route exact path='/' component={Navbar} />
+        <Route exact path='/schedule' component={Navbar} />
+        <Route exact path='/orgnization' component={Navbar} />
         <Switch>
           <Route exact path='/'>
             <Index />
@@ -23,15 +25,17 @@ function App() {
           <Route exact path='/organization'>
             <Organization />
           </Route>
-          <Route exact path='/admin'>
+          <Route path='/admin'>
             <Admin />
           </Route>
           <Route>
             <NotFound />
           </Route>
         </Switch>
+        <Route exact path='/' component={Footer} />
+        <Route exact path='/schedule' component={Footer} />
+        <Route exact path='/orgnization' component={Footer} />
       </Router>
-      <Footer />
     </div>
   );
 }
