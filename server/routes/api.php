@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::post('logout', [UserController::class, 'logout'])->middleware('jwt.verify
 Route::middleware('VerifyJwt','VerifyAdmin')->group(function () {
     // Route::get('test', [AdminController::class, 'test']);
 });
+
+Route::resource('schedule', ScheduleController::class);
