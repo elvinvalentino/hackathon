@@ -103,4 +103,10 @@ class OrganizationController extends Controller
 
         return response()->json(['message'=>'User deleted'], 200);
     }
+
+    public function filter($role){
+        $role_id = Role::where('name',$role)->first()->id;
+        if(!$role_id) abort(404);
+        return response()->json(['data'=>User::where('role_id',$role_id)->get()]);
+    }
 }
