@@ -40,4 +40,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function schedule(){
+        return $this->hasMany(Schedule::class);
+    }
+
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
 }

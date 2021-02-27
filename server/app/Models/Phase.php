@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Phase extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name'];
+    
+    public function scheduleDetail(){
+        return $this->hasMany(Patient::class);
+    }
 }

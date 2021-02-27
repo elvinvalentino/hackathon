@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'schedule_details','name','email','age',
+        'occupation','nationality','id_card','image','status'
+    ];
+
+    public function schedule_detail(){
+        return $this->belongsTo(ScheduleDetail::class);
+    }
 }
