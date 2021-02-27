@@ -7,7 +7,7 @@ import Schedule from './pages/Schedule';
 import Organization from './pages/Organization';
 import NotFound from './pages/NotFound';
 import Admin from './pages/Admin';
-import Authentication from './pages/Authentication';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
             <Index />
           </Route>
           <Route exact path='/login'>
-            <Authentication />
+            <Login />
           </Route>
           <Route exact path='/schedule'>
             <Schedule />
