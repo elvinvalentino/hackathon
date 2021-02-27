@@ -22,6 +22,6 @@ class ScheduleDetail extends Model
     }
 
     public function schedule(){
-        return $this->hasOne('schedule_id','id');
+        return $this->hasOne( Schedule::class , 'id','schedule_id');
     }
 }

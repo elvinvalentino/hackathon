@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Schedule;
 use Illuminate\Http\Request;
+use App\Models\ScheduleDetail;
 use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
@@ -40,6 +41,11 @@ class ScheduleController extends Controller
             'country' => $request->country,
             'city' => $request->city,
             'address' => $request->address
+        ]);
+
+        $dataDetail = ScheduleDetail::create([
+            'schedule_id' => $data->id,
+            'phase_id' => 1
         ]);
 
         return response()->json($data,200);
