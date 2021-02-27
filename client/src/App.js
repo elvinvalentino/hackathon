@@ -6,11 +6,12 @@ import Index from './pages/Index';
 import Schedule from './pages/Schedule';
 import Organization from './pages/Organization';
 import NotFound from './pages/NotFound';
+import Admin from './pages/Admin';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
       <Router>
         <Switch>
           <Route exact path='/'>
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route exact path='/organization'>
             <Organization />
+          </Route>
+          <Route exact path='/admin'>
+            <Admin />
           </Route>
           <Route>
             <NotFound />

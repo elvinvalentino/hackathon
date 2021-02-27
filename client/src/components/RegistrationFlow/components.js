@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
 export const RegistrationFlowContainer = styled(Container)`
-margin-top: 2em;
+    margin-top: 2em;
     display: flex;
     justify-content: center;
     flex-direction: column;
