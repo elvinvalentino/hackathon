@@ -19,16 +19,30 @@ use App\Http\Controllers\ScheduleController;
 
 Route::post('login', [UserController::class , 'login']);
 Route::post('register', [UserController::class , 'register']);
-Route::post('logout', [UserController::class, 'logout'])->middleware('jwt.verify');
+Route::post('logout', [UserController::class, 'logout'])->middleware('VerifyJwt');
 
-Route::middleware('VerifyJwt','VerifyAdmin')->group(function () {
+Route::middleware('VerifyJwt')->group(function () {
+
+    Route::middleware('VerifyAdmin')->group(function () {
+
+        Route::apiResources([
+            'organization' => OrganizationController::class
+        ]);
     
-    Route::apiResources([
-        'organization' => OrganizationController::class,
-        'schedule' => ScheduleController::class,
-    ]);
+        Route::get('/filter/{name}', [OrganizationController::class,'filter']);
+    });
 
-    Route::get('/filter/{name}', [OrganizationController::class,'filter']);
+    Route::middleware('VerifyOrganization')->group(function () {
+    
+        Route::apiResources([
+            'schedule' => ScheduleController::class
+        ]);
+
+    });
 });
+
+
+
+
 
 
