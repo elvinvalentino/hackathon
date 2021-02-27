@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrganizationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +21,6 @@ Route::post('register', [UserController::class , 'register']);
 Route::post('logout', [UserController::class, 'logout'])->middleware('jwt.verify');
 
 Route::middleware('VerifyJwt','VerifyAdmin')->group(function () {
-    // Route::get('test', [AdminController::class, 'test']);
+    Route::apiResource('organization', OrganizationController::class);
+    Route::get('/filter/{name}', [OrganizationController::class,'filter']);
 });
