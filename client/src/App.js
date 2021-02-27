@@ -7,15 +7,19 @@ import Schedule from './pages/Schedule';
 import Organization from './pages/Organization';
 import NotFound from './pages/NotFound';
 import Admin from './pages/Admin';
+import Authentication from './pages/Authentication';
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
+      <Navbar />
       <Router>
         <Switch>
           <Route exact path='/'>
             <Index />
+          </Route>
+          <Route exact path='/login'>
+            <Authentication />
           </Route>
           <Route exact path='/schedule'>
             <Schedule />
