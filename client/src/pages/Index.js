@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-function index() {
+import Content from '../components/Content';
+import Hero from '../components/Hero';
+
+const index = () => {
   return (
-    <div>
-      Index Pages
-    </div>
-  )
+    <Content>
+      <Hero />
+      <h1>test</h1>
+    </Content>
+  ) 
 }
 
-export default index
+export default index;
