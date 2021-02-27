@@ -20,4 +20,8 @@ class ScheduleDetail extends Model
     public function phase(){
         return $this->belongsTo(Phase::class);
     }
+
+    public function schedule(){
+        return $this->hasOne('schedule_id','id');
+    }
 }

@@ -23,9 +23,9 @@ Route::post('logout', [UserController::class, 'logout'])->middleware('jwt.verify
 
 Route::middleware('VerifyJwt','VerifyAdmin')->group(function () {
     
-    Route::apiResource([
+    Route::apiResources([
         'organization' => OrganizationController::class,
-        'schedule' => ScheduleController::class
+        'schedule' => ScheduleController::class,
     ]);
 
     Route::get('/filter/{name}', [OrganizationController::class,'filter']);
