@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <Container>
       <Grid container spacing={3} alignItems="center">
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Headline>
             Increase your immunity,
             <br />
@@ -26,7 +26,7 @@ const Hero = () => {
             </HeroButton>
           </StyledLink>
         </Grid>
-        <Grid container item xs={12} sm={6} justify="flex-end">
+        <Grid container item xs={12} md={6} justify="flex-end">
           <HeroImage src={image} />
         </Grid>
       </Grid>
