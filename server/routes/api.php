@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,8 @@ use App\Http\Controllers\UserController;
 
 Route::post('login', [UserController::class , 'login']);
 Route::post('register', [UserController::class , 'register']);
-Route::middleware('auth:api')->post('logout', [UserController::class, 'logout']);
+Route::post('logout', [UserController::class, 'logout'])->middleware('jwt.verify');
 
-Route::middleware('auth:api')->group(function () {
-    
+Route::middleware('VerifyJwt','VerifyAdmin')->group(function () {
+    // Route::get('test', [AdminController::class, 'test']);
 });
