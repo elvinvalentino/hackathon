@@ -40,7 +40,6 @@ class ScheduleDetailController extends Controller
         ]);
 
         $data = ScheduleDetail::create([
-            'phase_id' => 1,
             'schedule_id' => $request->id,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,

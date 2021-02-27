@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Phase;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use App\Models\ScheduleDetail;
@@ -45,7 +46,7 @@ class ScheduleController extends Controller
 
         $dataDetail = ScheduleDetail::create([
             'schedule_id' => $data->id,
-            'phase_id' => 1
+            'phase_id' => Phase::where('name','2')->first()->id
         ]);
 
         return response()->json($data,200);
