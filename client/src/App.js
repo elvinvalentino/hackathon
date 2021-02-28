@@ -8,6 +8,7 @@ import Organization from './pages/Organization';
 import NotFound from './pages/NotFound';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -15,12 +16,17 @@ function App() {
       <Router>
         <Route exact path='/' component={Navbar} />
         <Route exact path='/schedule' component={Navbar} />
+        <Route exact path='/login' component={Navbar} />
+        <Route exact path='/register' component={Navbar} />
         <Switch>
           <Route exact path='/'>
             <Index />
           </Route>
           <Route exact path='/login'>
             <Login />
+          </Route>
+          <Route exact path='/register'>
+            <Register />
           </Route>
           <Route exact path='/schedule'>
             <Schedule />
@@ -37,6 +43,8 @@ function App() {
         </Switch>
         <Route exact path='/' component={Footer} />
         <Route exact path='/schedule' component={Footer} />
+        <Route exact path='/login' component={Footer} />
+        <Route exact path='/register' component={Footer} />
       </Router>
     </div>
   );
