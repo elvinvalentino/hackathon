@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\OrganizationController;
-use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\ScheduleDetailController;
 use App\Models\ScheduleDetail;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\ScheduleDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,10 +38,16 @@ Route::middleware('VerifyJwt')->group(function () {
     
         Route::apiResource('schedule', ScheduleController::class)->except('index');
         Route::apiResource('scheduleDetail', ScheduleDetailController::class)->except('index');
+        Route::apiResource('patient', PatientController::class);
 
     });
+
+    Route::get('myprofile', [UserController::class, 'getProfile']);
 });
 
 Route::get('organization', [OrganizationController::class, 'index']);
 Route::get('schedule', [ScheduleController::class, 'index']);
 Route::get('scheduleDetail', [ScheduleDetailController::class, 'index']);
+// Route::post('patient', [PatientController::class, 'store']);
+Route::post('notify-register', [MailController::class, 'notifyRegister']);
+

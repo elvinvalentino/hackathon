@@ -15,14 +15,14 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('schedule_details')->references('id')->on('schedule_details')->onDelete('cascade')->nullable();
+            $table->foreignId('schedule_details')->nullable()->references('id')->on('schedule_details')->onDelete('cascade');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('age');
             $table->string('occupation');
             $table->string('nationality');
             $table->string('id_card')->unique();
-            $table->string('image');
+            $table->longText('image');
             $table->string('status')->default('Pending');
             $table->timestamps();
         });

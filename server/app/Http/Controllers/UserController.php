@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,8 @@ class UserController extends Controller
 
     public function login(Request $request){
         $credentials = $request->only('email', 'password');
+        $user = User::where('email',$credentials['email'])->first();
+        $role = Role::find($user->role_id)->name;
 
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
@@ -27,7 +30,12 @@ class UserController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        return response()->json(['token' => $token],200);
+        return response()->json([
+            'name' => $user->name,
+            'email' => $user->email,
+            'role' => $role,
+            'token' => $token
+        ],200);
     }
 
     public function register(Request $request){
@@ -65,5 +73,14 @@ class UserController extends Controller
         }
 
         return response()->json($user);
+    }
+
+    public function getProfile(){
+        $role = Role::find(Auth::user()->role_id);
+        return response()->json([
+            'name' => Auth::user()->name,
+            'email' => Auth::user()->email,
+            'role' => $role->name
+        ]);
     }
 }
