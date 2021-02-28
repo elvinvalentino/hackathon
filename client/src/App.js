@@ -15,7 +15,6 @@ function App() {
       <Router>
         <Route exact path='/' component={Navbar} />
         <Route exact path='/schedule' component={Navbar} />
-        <Route exact path='/orgnization' component={Navbar} />
         <Switch>
           <Route exact path='/'>
             <Index />
@@ -26,7 +25,7 @@ function App() {
           <Route exact path='/schedule'>
             <Schedule />
           </Route>
-          <Route exact path='/organization'>
+          <Route path='/organization'>
             <Organization />
           </Route>
           <Route path='/admin'>
@@ -38,7 +37,6 @@ function App() {
         </Switch>
         <Route exact path='/' component={Footer} />
         <Route exact path='/schedule' component={Footer} />
-        <Route exact path='/orgnization' component={Footer} />
       </Router>
     </div>
   );

@@ -24,9 +24,9 @@ const navList = [
 ]
 
 const Admin = () => {
-  const location = useLocation();
-  console.log(location);
-  const [active, setActive] = useState('Dashboard');
+  const { pathname } = useLocation();
+  const navActive = navList.find(e => e.path === pathname)?.text;
+  const [active, setActive] = useState(navActive);
 
   return (
     <Drawer navList={navList} active={active} setActive={setActive}>
