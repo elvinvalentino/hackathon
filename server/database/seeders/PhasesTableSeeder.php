@@ -17,7 +17,8 @@ class PhasesTableSeeder extends Seeder
         $phases = [
             '1a',
             '1b',
-            '1c'
+            '1c',
+            '2'
         ];
 
         foreach($phases as $phase){

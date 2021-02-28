@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\ScheduleDetailController;
+use App\Models\ScheduleDetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,8 @@ Route::middleware('VerifyJwt')->group(function () {
     Route::middleware('VerifyOrganization')->group(function () {
     
         Route::apiResources([
-            'schedule' => ScheduleController::class
+            'schedule' => ScheduleController::class,
+            'scheduleDetail' => ScheduleDetailController::class
         ]);
 
     });
