@@ -1,0 +1,71 @@
+version: v1beta9
+images:
+  app:
+    image: rickt25/server
+    preferSyncOverRebuild: true
+    injectRestartHelper: true
+    appendDockerfileInstructions:
+    - USER root
+deployments:
+- name: database
+  helm:
+    chart:
+      name: stable/mysql
+      version: "1.4.0"
+    values:
+      mysqlDatabase: covid_schedule
+      mysqlUser: root
+      mysqlRootPassword: 
+      mysqlPassword: 
+- name: server
+  helm:
+    componentChart: true
+    values:
+      containers:
+      - image: rickt25/server
+      env:
+        - name: DB_HOST
+          value: database-mysql
+        - name: DB_PASSWORD
+          value: ${DB_PASSWORD}
+      service:
+        ports:
+        - port: 80
+
+dev:
+  ports:
+  - imageName: app
+    forward:
+    - port: 8080
+      remotePort: 80
+  open:
+  - url: http://localhost:8080
+  sync:
+  - imageName: app
+    excludePaths:
+    - .git/
+    uploadExcludePaths:
+    - Dockerfile
+    - devspace.yaml
+    onUpload:
+      restartContainer: true
+profiles:
+- name: production
+  description: ""
+  patches:
+  - op: remove
+    path: images.app.appendDockerfileInstructions
+  - op: remove
+    path: images.app.injectRestartHelper
+- name: interactive
+  description: ""
+  patches:
+  - op: add
+    path: dev.interactive
+    value:
+      defaultEnabled: true
+  - op: add
+    path: images.app.entrypoint
+    value:
+    - sleep
+    - "9999999999"

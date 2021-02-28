@@ -40,9 +40,3 @@ Route::middleware('VerifyJwt')->group(function () {
 
     });
 });
-
-
-
-
-
-
