@@ -13,21 +13,21 @@ deployments:
       name: stable/mysql
       version: "1.4.0"
     values:
-      mysqlDatabase: covid_schedule
-      mysqlUser: root
-      mysqlRootPassword: 
-      mysqlPassword: 
+      mysqlDatabase: "homestead"
+      mysqlUser: "homestead"
+      mysqlRootPassword: ${DB_ROOT_PASSWORD}
+      mysqlPassword: ${DB_PASSWORD}
 - name: server
   helm:
     componentChart: true
     values:
       containers:
       - image: rickt25/server
-      env:
+        env:
         - name: DB_HOST
           value: database-mysql
         - name: DB_PASSWORD
-          value: ${DB_PASSWORD}
+          value: 123
       service:
         ports:
         - port: 80

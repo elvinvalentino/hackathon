@@ -27,19 +27,19 @@ Route::middleware('VerifyJwt')->group(function () {
 
     Route::middleware('VerifyAdmin')->group(function () {
 
-        Route::apiResources([
-            'organization' => OrganizationController::class
-        ]);
-    
+        Route::apiResource('organization', OrganizationController::class)->except('index');
         Route::get('/filter/{name}', [OrganizationController::class,'filter']);
+        
     });
 
     Route::middleware('VerifyOrganization')->group(function () {
     
-        Route::apiResources([
-            'schedule' => ScheduleController::class,
-            'scheduleDetail' => ScheduleDetailController::class
-        ]);
+        Route::apiResource('schedule', ScheduleController::class)->except('index');
+        Route::apiResource('scheduleDetail', ScheduleDetailController::class)->except('index');
 
     });
 });
+
+Route::get('organization', [OrganizationController::class, 'index']);
+Route::get('schedule', [ScheduleController::class, 'index']);
+Route::get('scheduleDetail', [ScheduleDetailController::class, 'index']);
