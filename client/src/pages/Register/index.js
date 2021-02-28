@@ -1,14 +1,23 @@
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
-import { AuthenticationContainer, AuthenticationCard, CardTitle , AuthenticationGrid, AuthenticationInputContainer, AuthenticationInput, AuthenticationForm, SubmitButton} from './Login.component';
+import { AuthenticationContainer, AuthenticationCard, CardTitle , AuthenticationGrid, AuthenticationInputContainer, AuthenticationInput, AuthenticationForm, SubmitButton} from './Register.component';
 
-const Authentication = () => {
-
+const Register = () => {
     return (
         <AuthenticationContainer>
             <AuthenticationCard>
-                <CardTitle variant="h4" component="h1">Login</CardTitle>
+                <CardTitle variant="h5" component="h1">Register Organization</CardTitle>
                 <AuthenticationForm>
+                    <AuthenticationInputContainer>
+                        <AuthenticationGrid container spacing={1} alignItems="flex-end">
+                        <AuthenticationGrid item>
+                            <AccountCircle />
+                        </AuthenticationGrid>
+                        <AuthenticationGrid item>
+                            <AuthenticationInput id="input-with-icon-grid" label="Username" />
+                        </AuthenticationGrid>
+                        </AuthenticationGrid>
+                    </AuthenticationInputContainer>
                     <AuthenticationInputContainer>
                         <AuthenticationGrid container spacing={1} alignItems="flex-end">
                         <AuthenticationGrid item>
@@ -40,4 +49,4 @@ const Authentication = () => {
     )
 }
 
-export default Authentication;
+export default Register;
