@@ -1,40 +1,64 @@
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
-import { AuthenticationContainer, AuthenticationCard, CardTitle, AuthenticationGrid, AuthenticationInputContainer, AuthenticationInput, AuthenticationForm, SubmitButton } from './Login.component';
+import { useDispatch } from 'react-redux';
+
+import { login } from '../../redux/actions/auth';
+import {
+    AuthenticationContainer,
+    AuthenticationCard,
+    CardTitle,
+    AuthenticationGrid,
+    AuthenticationInputContainer,
+    AuthenticationInput,
+    AuthenticationForm,
+    SubmitButton
+} from './components';
+import { useForm } from '../../hooks';
 
 const Authentication = () => {
+    const dispatch = useDispatch();
+    const { data, handleOnChange, handleOnSubmit } = useForm({
+        email: '',
+        password: ''
+    }, () => dispatch(login(data)))
+
+
+
 
     return (
         <AuthenticationContainer>
             <AuthenticationCard>
                 <CardTitle variant="h4" component="h1">Login</CardTitle>
-                <AuthenticationForm>
-                    <AuthenticationInputContainer>
-                        <AuthenticationGrid container spacing={1} alignItems="flex-end">
-                            <AuthenticationGrid item>
-                                <AccountCircle />
+                <form onSubmit={handleOnSubmit}>
+                    <AuthenticationForm>
+                        <AuthenticationInputContainer>
+                            <AuthenticationGrid container spacing={1} alignItems="flex-end">
+                                <AuthenticationGrid item>
+                                    <AccountCircle />
+                                </AuthenticationGrid>
+                                <AuthenticationGrid item>
+                                    <AuthenticationInput id="input-with-icon-grid" label="Email" onChange={handleOnChange} name="email" />
+                                </AuthenticationGrid>
                             </AuthenticationGrid>
-                            <AuthenticationGrid item>
-                                <AuthenticationInput id="input-with-icon-grid" label="Email" />
+                        </AuthenticationInputContainer>
+                        <AuthenticationInputContainer>
+                            <AuthenticationGrid container spacing={1} alignItems="flex-end">
+                                <AuthenticationGrid item>
+                                    <LockIcon />
+                                </AuthenticationGrid>
+                                <AuthenticationGrid item>
+                                    <AuthenticationInput id="input-with-icon-grid" type="password" label="Password" onChange={handleOnChange} name="password" />
+                                </AuthenticationGrid>
                             </AuthenticationGrid>
-                        </AuthenticationGrid>
-                    </AuthenticationInputContainer>
-                    <AuthenticationInputContainer>
-                        <AuthenticationGrid container spacing={1} alignItems="flex-end">
-                            <AuthenticationGrid item>
-                                <LockIcon />
-                            </AuthenticationGrid>
-                            <AuthenticationGrid item>
-                                <AuthenticationInput id="input-with-icon-grid" type="password" label="Password" />
-                            </AuthenticationGrid>
-                        </AuthenticationGrid>
-                    </AuthenticationInputContainer>
+                        </AuthenticationInputContainer>
 
-                    <SubmitButton type="submit" variant="contained">
-                        Login
+                        <SubmitButton type="submit" variant="contained">
+                            Login
                     </SubmitButton>
 
-                </AuthenticationForm>
+                    </AuthenticationForm>
+                </form>
+
             </AuthenticationCard>
         </AuthenticationContainer>
     )

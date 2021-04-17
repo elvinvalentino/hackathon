@@ -36,7 +36,7 @@ export const AuthenticationGrid = styled(Grid)`
     color: ${theme.color.primary};
 `
 
-export const  AuthenticationInputContainer = styled.div`
+export const AuthenticationInputContainer = styled.div`
     margin-bottom: 2em;
 `
 
